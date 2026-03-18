@@ -8,7 +8,7 @@ public typealias _DefaultDiagnostics = DefaultDiagnostics
 public enum Grammar {
     // note: this only works on swift >= 5.7
     /// A shortcut for expressing the type constraints on
-    /// ``ParsingRule.parse(_:) (ParsingInput<ParsingDiagnostics<Source>>)``.
+    /// ``ParsingRule.parse(_:) (ParsingInput<ParsingDiagnostics>)``.
     ///
     /// To use this compile-time abstraction, fill in its generic parameters and
     /// declare that it must conform to `Any`.

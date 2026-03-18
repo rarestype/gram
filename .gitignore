@@ -1,5 +1,3 @@
-.build/
-.build.ssgc/
-.vscode/
-.devcontainer/
-.ssgc/
+/.build
+/.build.ssgc
+/.vscode

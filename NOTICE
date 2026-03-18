@@ -1,12 +1,8 @@
-the `swift-grammar` package was created by dianna ma (@taylorswift).
+the `gram` package was created by diana ma (@taylorswift).
 
 you are welcome to contribute to this project at:
 
-    https://github.com/tayloraswift/swift-grammar
+    https://github.com/rarestype/gram
 
 we do not maintain any other mirrors of this repository, and such
 forks of this repository may not carry the most up-to-date code.
-
-contributors:
-
-1.  dianna ma (@taylorswift, 2021–24)

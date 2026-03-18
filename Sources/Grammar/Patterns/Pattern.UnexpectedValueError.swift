@@ -1,11 +1,6 @@
-extension Pattern
-{
-    @frozen public
-    struct UnexpectedValueError:Equatable, Error 
-    {
-        @inlinable public 
-        init() 
-        {
+extension Pattern {
+    @frozen public struct UnexpectedValueError: Equatable, Error {
+        @inlinable public init() {
         }
     }
 }

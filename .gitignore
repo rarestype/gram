@@ -1,3 +1,5 @@
 /.build
 /.build.ssgc
 /.vscode
+
+/Package.resolved

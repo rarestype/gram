@@ -1,72 +1,49 @@
 <div align="center">
 
-***`grammar`***
+🌚 &nbsp; **gram** &nbsp; 🌝
 
-[![Tests](https://github.com/tayloraswift/swift-grammar/actions/workflows/Tests.yml/badge.svg)](https://github.com/tayloraswift/swift-grammar/actions/workflows/Tests.yml)
-[![Documentation](https://github.com/tayloraswift/swift-grammar/actions/workflows/Documentation.yml/badge.svg)](https://github.com/tayloraswift/swift-grammar/actions/workflows/Documentation.yml)
+high-performance constructive parsing, in pure swift
+
+[documentation and api reference](https://swiftinit.org/docs/gram/grammar)
 
 </div>
 
 
-High-performance constructive parsing, in pure Swift. This module powers the [`swift-json`](https://github.com/tayloraswift/swift-json) library!
+## Requirements
 
-**Importing this module will expose the following top-level symbols**:
+The `gram` library requires Swift 5.8 or later.
 
-* `enum Pattern`
-* `enum UnicodeDigit`
-* `enum UnicodeEncoding`
+| Platform | Status |
+| -------- | ------ |
+| 💬 Documentation | [![Documentation](https://github.com/rarestype/gram/actions/workflows/Documentation.yml/badge.svg)](https://github.com/rarestype/gram/actions/workflows/Documentation.yml) |
+| 🐧 Linux | [![Tests](https://github.com/rarestype/gram/actions/workflows/Tests.yml/badge.svg)](https://github.com/rarestype/gram/actions/workflows/Tests.yml) |
+| 🍏 Darwin | [![Tests](https://github.com/rarestype/gram/actions/workflows/Tests.yml/badge.svg)](https://github.com/rarestype/gram/actions/workflows/Tests.yml) |
+| 🍏 Darwin (iOS) | [![iOS](https://github.com/rarestype/gram/actions/workflows/iOS.yml/badge.svg)](https://github.com/rarestype/gram/actions/workflows/iOS.yml) |
+| 🍏 Darwin (tvOS) | [![tvOS](https://github.com/rarestype/gram/actions/workflows/tvOS.yml/badge.svg)](https://github.com/rarestype/gram/actions/workflows/tvOS.yml) |
+| 🍏 Darwin (visionOS) | [![visionOS](https://github.com/rarestype/gram/actions/workflows/visionOS.yml/badge.svg)](https://github.com/rarestype/gram/actions/workflows/visionOS.yml) |
+| 🍏 Darwin (watchOS) | [![watchOS](https://github.com/rarestype/gram/actions/workflows/watchOS.yml/badge.svg)](https://github.com/rarestype/gram/actions/workflows/watchOS.yml) |
 
-* `protocol TraceableError`
-* `protocol TraceableErrorRoot`
-* `struct ParsingError<Index>`
 
-* `struct ParsingInput<Diagnostics>`
-* `struct NoDiagnostics<Source>`
-* `struct DefaultDiagnostics<Source>`
-* `protocol ParsingDiagnostics`
+## Adding `gram` as a dependency
 
-* `protocol ParsingRule`
-* `protocol TerminalRule`
-* `protocol LiteralRule`
-* `protocol DigitRule`
-* `protocol ASCIITerminal`
-* `protocol UTF8Terminal`
-* `protocol UTF16Terminal`
-* `protocol UnicodeTerminal`
-* `protocol CharacterTerminal`
-
-## adding `swift-grammar` as a dependency
-
-To use `swift-grammar` in a project, add the following to your `Package.swift` file:
+To use `gram` in a project, add the following to your `Package.swift` file:
 
 ```swift
-let package = Package(
+let package: Package = .init(
     ...
     dependencies: [
         // other dependencies
-        .package(url: "https://github.com/tayloraswift/swift-grammar", from: "0.4.0"),
+        .package(url: "https://github.com/rarestype/gram", from: "1.0.0"),
     ],
     targets: [
-        .target(name: "example",
+        .target(
+            name: "example",
             dependencies: [
-                .product(name: "Grammar", package: "swift-grammar"),
+                .product(name: "Grammar", package: "gram"),
                 // other dependencies
-            ]),
+            ]
+        ),
         // other targets
     ]
 )
 ```
-
-
-## Requirements
-
-The swift-grammar library requires Swift 5.8 or later.
-
-| Platform | Status |
-| -------- | ------ |
-| 🐧 Linux | [![Tests](https://github.com/tayloraswift/swift-grammar/actions/workflows/Tests.yml/badge.svg)](https://github.com/tayloraswift/swift-grammar/actions/workflows/Tests.yml) |
-| 🍏 Darwin | [![Tests](https://github.com/tayloraswift/swift-grammar/actions/workflows/Tests.yml/badge.svg)](https://github.com/tayloraswift/swift-grammar/actions/workflows/Tests.yml) |
-| 🍏 Darwin (iOS) | [![iOS](https://github.com/tayloraswift/swift-grammar/actions/workflows/iOS.yml/badge.svg)](https://github.com/tayloraswift/swift-grammar/actions/workflows/iOS.yml) |
-| 🍏 Darwin (tvOS) | [![tvOS](https://github.com/tayloraswift/swift-grammar/actions/workflows/tvOS.yml/badge.svg)](https://github.com/tayloraswift/swift-grammar/actions/workflows/tvOS.yml) |
-| 🍏 Darwin (visionOS) | [![visionOS](https://github.com/tayloraswift/swift-grammar/actions/workflows/visionOS.yml/badge.svg)](https://github.com/tayloraswift/swift-grammar/actions/workflows/visionOS.yml) |
-| 🍏 Darwin (watchOS) | [![watchOS](https://github.com/tayloraswift/swift-grammar/actions/workflows/watchOS.yml/badge.svg)](https://github.com/tayloraswift/swift-grammar/actions/workflows/watchOS.yml) |

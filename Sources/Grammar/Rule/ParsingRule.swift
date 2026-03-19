@@ -1,13 +1,11 @@
 /// A structured parsing rule.
-public
-protocol ParsingRule<Terminal>
-{
+public protocol ParsingRule<Terminal> {
     /// The index type of the ``ParsingInput.source`` this rule expects.
     ///
     /// Parsing rules must be associated with a source location type because
     /// some applications may wish to store these indices in the returned
     /// ``Construction``s. If the source location type were not fixed, then
-    /// different calls to ``parse(_:) (ParsingInput<ParsingDiagnostics<Source>>)`` could
+    /// different calls to ``parse(_:) (ParsingInput<ParsingDiagnostics>)`` could
     /// potentially return constructions of varying types, which would require additional
     /// abstraction, which would be inefficient.
     ///
@@ -40,14 +38,13 @@ protocol ParsingRule<Terminal>
     ///     Mutating `input` does *not* invalidate its indices. You can always
     ///     store an ``ParsingInput/index`` and dereference it later, as long
     ///     as you do not overwrite the inout binding elsewhere.
-    static
-    func parse<Source>(
-        _ input:inout ParsingInput<some ParsingDiagnostics<Source>>) throws -> Construction
-        where Source:Collection<Terminal>, Source.Index == Location
+    static func parse<Source>(
+        _ input: inout ParsingInput<some ParsingDiagnostics<Source>>
+    ) throws -> Construction
+        where Source: Collection<Terminal>, Source.Index == Location
 }
 
-extension ParsingRule
-{
+extension ParsingRule {
     /// Attempts to parse the given input completely, emitting diagnostics
     /// if parsing failed.
     ///
@@ -55,12 +52,12 @@ extension ParsingRule
     /// >   Throws:
     ///     A ``Pattern.UnexpectedValueError`` if there remained any
     ///     unparsed input after applying this rule to its furthest extent.
-    @inlinable public static
-    func parse<Source>(diagnosing source:Source) throws -> Construction
-        where Source:Collection<Terminal>, Source.Index == Location
-    {
-        var input:ParsingInput<DefaultDiagnostics<Source>> = .init(source)
-        let construction:Construction = try input.parse(as: Self.self)
+    @inlinable public static func parse<Source>(
+        diagnosing source: Source
+    ) throws -> Construction
+        where Source: Collection<Terminal>, Source.Index == Location {
+        var input: ParsingInput<DefaultDiagnostics<Source>> = .init(source)
+        let construction: Construction = try input.parse(as: Self.self)
         try input.parse(as: Pattern.End<Location, Terminal>.self)
         return construction
     }
@@ -70,12 +67,10 @@ extension ParsingRule
     /// >   Throws:
     ///     A ``Pattern.UnexpectedValueError`` if there remained any
     ///     unparsed input after applying this rule to its furthest extent.
-    @inlinable public static
-    func parse<Source>(_ source:Source) throws -> Construction
-        where Source:Collection<Terminal>, Source.Index == Location
-    {
-        var input:ParsingInput<NoDiagnostics<Source>> = .init(source)
-        let construction:Construction = try input.parse(as: Self.self)
+    @inlinable public static func parse<Source>(_ source: Source) throws -> Construction
+        where Source: Collection<Terminal>, Source.Index == Location {
+        var input: ParsingInput<NoDiagnostics<Source>> = .init(source)
+        let construction: Construction = try input.parse(as: Self.self)
         try input.parse(as: Pattern.End<Location, Terminal>.self)
         return construction
     }
@@ -85,14 +80,14 @@ extension ParsingRule
     /// >   Throws:
     ///     A ``Pattern.UnexpectedValueError`` if there remained any
     ///     unparsed input after applying this rule to its furthest extent.
-    @inlinable public static
-    func parse<Source, Vector>(_ source:Source, into _:Vector.Type = Vector.self)
-        throws -> Vector
-        where   Source:Collection<Terminal>, Source.Index == Location,
-                Vector:RangeReplaceableCollection<Construction>
-    {
-        var input:ParsingInput<NoDiagnostics<Source>> = .init(source)
-        let construction:Vector = input.parse(as: Self.self, in: Vector.self)
+    @inlinable public static func parse<Source, Vector>(
+        _ source: Source,
+        into _: Vector.Type = Vector.self
+    ) throws -> Vector
+        where   Source: Collection<Terminal>, Source.Index == Location,
+        Vector: RangeReplaceableCollection<Construction> {
+        var input: ParsingInput<NoDiagnostics<Source>> = .init(source)
+        let construction: Vector = input.parse(as: Self.self, in: Vector.self)
         try input.parse(as: Pattern.End<Location, Terminal>.self)
         return construction
     }
@@ -100,34 +95,26 @@ extension ParsingRule
 
 // these extensions are mainly useful when defined as part of a tuple rule.
 // otherwise, the overloads in the previous section of code should be preferred
-extension Optional:ParsingRule where Wrapped:ParsingRule
-{
-    public
-    typealias Location  = Wrapped.Location
-    public
-    typealias Terminal  = Wrapped.Terminal
+extension Optional: ParsingRule where Wrapped: ParsingRule {
+    public typealias Location  = Wrapped.Location
+    public typealias Terminal  = Wrapped.Terminal
 
-    @inlinable public static
-    func parse<Source>(
-        _ input:inout ParsingInput<some ParsingDiagnostics<Source>>) -> Wrapped.Construction?
-        where Source:Collection<Terminal>, Source.Index == Location
-    {
+    @inlinable public static func parse<Source>(
+        _ input: inout ParsingInput<some ParsingDiagnostics<Source>>
+    ) -> Wrapped.Construction?
+        where Source: Collection<Terminal>, Source.Index == Location {
         // will choose non-throwing overload, so no infinite recursion will occur
         input.parse(as: Wrapped?.self)
     }
 }
-extension Array:ParsingRule where Element:ParsingRule
-{
-    public
-    typealias Location = Element.Location
-    public
-    typealias Terminal = Element.Terminal
+extension Array: ParsingRule where Element: ParsingRule {
+    public typealias Location = Element.Location
+    public typealias Terminal = Element.Terminal
 
-    @inlinable public static
-    func parse<Source>(
-        _ input:inout ParsingInput<some ParsingDiagnostics<Source>>) -> [Element.Construction]
-        where Source:Collection<Terminal>, Source.Index == Location
-    {
+    @inlinable public static func parse<Source>(
+        _ input: inout ParsingInput<some ParsingDiagnostics<Source>>
+    ) -> [Element.Construction]
+        where Source: Collection<Terminal>, Source.Index == Location {
         input.parse(as: Element.self, in: [Element.Construction].self)
     }
 }

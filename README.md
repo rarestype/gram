@@ -13,16 +13,8 @@ high-performance constructive parsing, in pure swift
 
 The `gram` library requires Swift 5.8 or later.
 
-| Platform | Status |
-| -------- | ------ |
-| 💬 Documentation | [![Documentation](https://github.com/rarestype/gram/actions/workflows/Documentation.yml/badge.svg)](https://github.com/rarestype/gram/actions/workflows/Documentation.yml) |
-| 🐧 Linux | [![Tests](https://github.com/rarestype/gram/actions/workflows/Tests.yml/badge.svg)](https://github.com/rarestype/gram/actions/workflows/Tests.yml) |
-| 🍏 Darwin | [![Tests](https://github.com/rarestype/gram/actions/workflows/Tests.yml/badge.svg)](https://github.com/rarestype/gram/actions/workflows/Tests.yml) |
-| 🍏 Darwin (iOS) | [![iOS](https://github.com/rarestype/gram/actions/workflows/iOS.yml/badge.svg)](https://github.com/rarestype/gram/actions/workflows/iOS.yml) |
-| 🍏 Darwin (tvOS) | [![tvOS](https://github.com/rarestype/gram/actions/workflows/tvOS.yml/badge.svg)](https://github.com/rarestype/gram/actions/workflows/tvOS.yml) |
-| 🍏 Darwin (visionOS) | [![visionOS](https://github.com/rarestype/gram/actions/workflows/visionOS.yml/badge.svg)](https://github.com/rarestype/gram/actions/workflows/visionOS.yml) |
-| 🍏 Darwin (watchOS) | [![watchOS](https://github.com/rarestype/gram/actions/workflows/watchOS.yml/badge.svg)](https://github.com/rarestype/gram/actions/workflows/watchOS.yml) |
-
+<!-- DO NOT EDIT BELOW! AUTOSYNC CONTENT [STATUS TABLE] -->
+<!-- DO NOT EDIT ABOVE! AUTOSYNC CONTENT [STATUS TABLE] -->
 
 ## Adding `gram` as a dependency
 

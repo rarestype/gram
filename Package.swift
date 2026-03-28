@@ -6,6 +6,7 @@ let package: Package = .init(
     platforms: [.macOS(.v10_15), .iOS(.v13), .tvOS(.v13), .watchOS(.v6)],
     products: [
         .library(name: "Grammar", targets: ["Grammar"]),
+        .library(name: "TestableErrors", targets: ["TestableErrors"]),
         .library(name: "TraceableErrors", targets: ["TraceableErrors"]),
     ],
     dependencies: [
@@ -19,6 +20,18 @@ let package: Package = .init(
             ]
         ),
 
-        .target(name: "TraceableErrors"),
+        .target(name: "TestableErrors"),
+        .target(
+            name: "TraceableErrors",
+            dependencies: [
+                .target(name: "TestableErrors"),
+            ]
+        ),
+        .testTarget(
+            name: "TraceableErrorsTests",
+            dependencies: [
+                .target(name: "TraceableErrors"),
+            ]
+        ),
     ]
 )

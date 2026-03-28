@@ -30,3 +30,4 @@ extension ParsingError {
         }
     }
 }
+extension ParsingError.Frame: Sendable where Index: Sendable {}

@@ -3,8 +3,7 @@ extension Error {
         *, deprecated,
         message: """
         calling == on (any Error, any Error) can cause infinite recursion on Swift >= 6.3
-        """,
-        renamed: "~="
+        """
     ) public static func == (lhs: Self, rhs: any Error) -> Bool {
         lhs ~= rhs
     }

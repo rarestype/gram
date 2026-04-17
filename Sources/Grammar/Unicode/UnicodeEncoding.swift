@@ -1,6 +1,5 @@
 /// A generic context for unicode definitions.
-public enum UnicodeEncoding<Location, Terminal> {
-}
+public enum UnicodeEncoding<Location, Terminal> {}
 extension UnicodeEncoding where Terminal: ASCIITerminal {
     @available(*, unavailable, renamed: "StartOfHeading")
     public typealias StartOfHeader = StartOfHeading

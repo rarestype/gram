@@ -249,10 +249,10 @@ extension ParsingInput {
     }
     @inlinable public mutating func parse(
         prefix count: Int
-    ) throws -> Diagnostics.Source.SubSequence {
+    ) throws(PatternMatchingError) -> Diagnostics.Source.SubSequence {
         guard let index: Diagnostics.Source.Index =
         self.source.index(self.index, offsetBy: count, limitedBy: self.source.endIndex) else {
-            throw Pattern.UnexpectedEndOfInputError.init()
+            throw .unexpectedEndOfInput
         }
 
         let prefix: Diagnostics.Source.SubSequence = self.source[self.index ..< index]

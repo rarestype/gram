@@ -7,10 +7,10 @@ public enum Pattern {
     public enum End<Location, Terminal>: ParsingRule {
         @inlinable public static func parse<Source>(
             _ input: inout ParsingInput<some ParsingDiagnostics<Source>>
-        ) throws
+        ) throws(PatternMatchingError)
             where Source: Collection<Terminal>, Source.Index == Location {
-            if let _: Terminal = input.next() {
-                throw UnexpectedValueError.init()
+            if  let _: Terminal = input.next() {
+                throw .unexpectedValue
             }
         }
     }

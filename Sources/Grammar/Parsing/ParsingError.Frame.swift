@@ -20,13 +20,16 @@ extension ParsingError {
         public let construction: Any.Type
         /// Creates a stack frame.
         /// -   Parameters:
-        ///     - index: An index into an associated input source.
-        ///     - rule: A metatype indicating the parsing rule associated with this stack frame.
-        ///     - construction: A metatype indicating the expected parsing result of this stack frame.
+        ///     -   index:
+        ///         An index into an associated input source.
+        ///     -   rule:
+        ///         A metatype indicating the parsing rule associated with this stack frame.
+        ///     -   construction:
+        ///         A metatype indicating the expected parsing result of this stack frame.
         @inlinable public init(index: Index, rule: Any.Type, construction: Any.Type) {
-            self.index          = index
-            self.rule           = rule
-            self.construction   = construction
+            self.index = index
+            self.rule = rule
+            self.construction = construction
         }
     }
 }

@@ -42,8 +42,7 @@ extension ParsingError {
         _ range: Range<Index>, background: Background,
         renderer render: (Background.SubSequence) -> String,
         newline predicate: (Background.Element) -> Bool
-    )
-    -> String
+    ) -> String
         where Background: BidirectionalCollection, Background.Index == Index {
         // `..<` means this will print the previous line if the problematic
         // index references the newline itself

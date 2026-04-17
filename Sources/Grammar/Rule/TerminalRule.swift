@@ -5,17 +5,15 @@ public protocol TerminalRule<Terminal, Construction>: ParsingRule {
 }
 
 extension TerminalRule {
-    @inlinable public static func parse<Diagnostics>(
-        _ input: inout ParsingInput<Diagnostics>
-    ) throws -> Construction
-        where   Diagnostics: ParsingDiagnostics,
-        Diagnostics.Source.Index == Location,
-        Diagnostics.Source.Element == Terminal {
+    @inlinable public static func parse<Source>(
+        _ input: inout ParsingInput<some ParsingDiagnostics<Source>>
+    ) throws(PatternMatchingError) -> Construction
+        where Source: Collection<Terminal>, Source.Index == Location {
         guard let terminal: Terminal = input.next() else {
-            throw Pattern.UnexpectedEndOfInputError.init()
+            throw .unexpectedEndOfInput
         }
         guard let value: Construction = Self.parse(terminal: terminal) else {
-            throw Pattern.UnexpectedValueError.init()
+            throw .unexpectedValue
         }
 
         return value

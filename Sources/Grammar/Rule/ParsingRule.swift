@@ -12,7 +12,7 @@ public protocol ParsingRule<Terminal> {
     /// >   Tip:
     ///     Implementations can satisfy this requirement with generics, allowing
     ///     parsing rules to be reused for different input types.
-    associatedtype Location
+    associatedtype Location: Sendable
     /// The element type of the ``ParsingInput.source`` this rule expects.
     associatedtype Terminal
     /// The type of the constructions produced by a successful application of this

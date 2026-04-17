@@ -4,12 +4,14 @@
 /// Parsing with ``DefaultDiagnostics`` less efficient than parsing with
 /// ``NoDiagnostics``. However, the errors it emits may be more useful for
 /// understanding the intuitive reason why parsing failed.
-@frozen public struct DefaultDiagnostics<Source>: ParsingDiagnostics where Source: Collection {
-    public var stack: [ParsingError<Source.Index>.Frame],
-    frontier: ParsingError<Source.Index>?
+@frozen public struct DefaultDiagnostics<Source>: ParsingDiagnostics
+    where Source: Collection, Source.Index: Sendable {
+    public var stack: [ParsingError<Source.Index>.Frame]
+    public var frontier: ParsingError<Source.Index>?
+
     @inlinable public init() {
-        self.stack      = []
-        self.frontier   = nil
+        self.stack = []
+        self.frontier = nil
     }
     @inlinable public mutating func push<Rule, Construction>(
         index: Source.Index,
@@ -32,18 +34,17 @@
         if  error is ParsingError<Source.Index> {
             return
         }
-        if let diagnostic: ParsingError<
-                Source.Index
-            > = self.frontier, index < diagnostic.index {
+        if  let diagnostic: ParsingError<Source.Index> = self.frontier,
+                diagnostic.index > index {
             // we did not make it as far as the previous most-successful parse
-            error           = diagnostic
+            error = diagnostic
         } else {
             let diagnostic: ParsingError<Source.Index> = .init(
                 at: index,
                 because: error, trace: self.stack
             )
-            self.frontier   = diagnostic
-            error           = diagnostic
+            self.frontier = diagnostic
+            error = diagnostic
         }
     }
 }

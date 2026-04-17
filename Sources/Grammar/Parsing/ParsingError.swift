@@ -1,4 +1,4 @@
-import TraceableErrors
+public import TraceableErrors
 
 /// An error type that indicates the furthest-successful parse, and provides a
 /// stack trace detailing how the parser got there.
@@ -9,9 +9,9 @@ import TraceableErrors
 /// invalid input.
 ///
 /// Custom ``ParsingRule`` implementations should not throw this error either.
-@frozen public struct ParsingError<Index>: TraceableError, CustomStringConvertible {
+@frozen public struct ParsingError<Index>: Error where Index: Sendable {
     /// The underlying parsing error.
-    public let underlying: Error
+    public let underlying: any Error
     /// The index of the first invalid terminal in the input, or the ``Collection/endIndex``
     /// of the input.
     ///
@@ -20,12 +20,13 @@ import TraceableErrors
     public let index: Index
     public let trace: [Frame]
 
-    @inlinable public init(at index: Index, because error: Error, trace: [Frame]) {
+    @inlinable public init(at index: Index, because error: any Error, trace: [Frame]) {
         self.underlying = error
         self.index      = index
         self.trace      = trace
     }
-
+}
+extension ParsingError: TraceableError {
     public var notes: [String] {
         trace.map {
             if $0.construction is Void.Type {
@@ -35,7 +36,8 @@ import TraceableErrors
             }
         }
     }
-
+}
+extension ParsingError {
     static func annotate<Background>(
         _ range: Range<Index>, background: Background,
         renderer render: (Background.SubSequence) -> String,

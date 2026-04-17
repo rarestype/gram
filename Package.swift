@@ -1,4 +1,4 @@
-// swift-tools-version:5.8
+// swift-tools-version:6.0
 import PackageDescription
 
 let package: Package = .init(
@@ -35,3 +35,15 @@ let package: Package = .init(
         ),
     ]
 )
+for target: Target in package.targets {
+    {
+        var settings: [SwiftSetting] = $0 ?? []
+
+        settings.append(.enableUpcomingFeature("ExistentialAny"))
+        settings.append(.enableUpcomingFeature("InternalImportsByDefault"))
+        settings.append(.enableExperimentalFeature("StrictConcurrency"))
+        settings.append(.define("DEBUG", .when(configuration: .debug)))
+
+        $0 = settings
+    } (&target.swiftSettings)
+}

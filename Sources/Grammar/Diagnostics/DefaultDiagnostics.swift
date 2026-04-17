@@ -25,7 +25,7 @@
     }
     @inlinable public mutating func reset(
         index: inout Source.Index,
-        to _: Void,
+        to _: (),
         because error: inout PatternMatchingError
     ) {
         defer {

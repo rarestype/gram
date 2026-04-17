@@ -1,6 +1,6 @@
 /// A parsing rule that matches terminals against a constant ``Sequence``.
 public protocol LiteralRule<Terminal>: ParsingRule
-    where Terminal: Equatable, Construction == Void {
+    where Terminal: Equatable, Construction == () {
     associatedtype Literal: Sequence<Terminal>
     static var literal: Literal { get }
 }

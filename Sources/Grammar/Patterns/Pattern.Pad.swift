@@ -3,7 +3,7 @@ extension Pattern {
         where Rule: ParsingRule,
         Padding: ParsingRule<Rule.Terminal>,
         Padding.Location == Rule.Location,
-        Padding.Construction == Void {
+        Padding.Construction == () {
         public typealias Terminal = Rule.Terminal
         public typealias Location = Rule.Location
 

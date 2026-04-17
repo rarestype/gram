@@ -3,7 +3,7 @@ extension Pattern {
         where Rule: ParsingRule,
         Separator: ParsingRule<Rule.Terminal>,
         Separator.Location == Rule.Location,
-        Separator.Construction == Void,
+        Separator.Construction == (),
         Construction: RangeReplaceableCollection<Rule.Construction> {
         public typealias Terminal = Rule.Terminal
         public typealias Location = Rule.Location

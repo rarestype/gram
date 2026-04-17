@@ -3,7 +3,7 @@ extension Pattern {
     ///
     /// This rule never throws an error.
     public enum Discard<Rule>: ParsingRule
-        where Rule: ParsingRule, Rule.Construction == Void {
+        where Rule: ParsingRule, Rule.Construction == () {
         public typealias Location = Rule.Location
         public typealias Terminal = Rule.Terminal
         @inlinable public static func parse<Source>(

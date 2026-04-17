@@ -26,25 +26,25 @@
     @inlinable public mutating func reset(
         index: inout Source.Index,
         to _: Void,
-        because error: inout any Error
+        because error: inout PatternMatchingError
     ) {
         defer {
             index = self.stack.removeLast().index
         }
-        if  error is ParsingError<Source.Index> {
+        if  case .arbitrary(_ as ParsingError<Source.Index>) = error {
             return
         }
         if  let diagnostic: ParsingError<Source.Index> = self.frontier,
                 diagnostic.index > index {
             // we did not make it as far as the previous most-successful parse
-            error = diagnostic
+            error = .arbitrary(diagnostic)
         } else {
             let diagnostic: ParsingError<Source.Index> = .init(
                 at: index,
                 because: error, trace: self.stack
             )
             self.frontier = diagnostic
-            error = diagnostic
+            error = .arbitrary(diagnostic)
         }
     }
 }

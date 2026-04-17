@@ -47,7 +47,7 @@ public enum Pattern {
 
         @inlinable public static func parse<Source>(
             _ input: inout ParsingInput<some ParsingDiagnostics<Source>>
-        ) throws -> Construction
+        ) throws(PatternMatchingError) -> Construction
             where Source: Collection<Terminal>, Source.Index == Location {
             var vector: Construction = .init()
             vector.append(try input.parse(as: Rule.self))
@@ -58,7 +58,7 @@ public enum Pattern {
         }
     }
     public enum Join<Rule, Separator, Construction>: ParsingRule
-        where   Rule: ParsingRule,
+        where Rule: ParsingRule,
         Separator: ParsingRule<Rule.Terminal>,
         Separator.Location == Rule.Location,
         Separator.Construction == Void,
@@ -68,7 +68,7 @@ public enum Pattern {
 
         @inlinable public static func parse<Source>(
             _ input: inout ParsingInput<some ParsingDiagnostics<Source>>
-        ) throws -> Construction
+        ) throws(PatternMatchingError) -> Construction
             where Source: Collection<Terminal>, Source.Index == Location {
             var vector: Construction = .init()
             vector.append(try input.parse(as: Rule.self))
@@ -80,7 +80,7 @@ public enum Pattern {
         }
     }
     public enum Pad<Rule, Padding>: ParsingRule
-        where   Rule: ParsingRule,
+        where Rule: ParsingRule,
         Padding: ParsingRule<Rule.Terminal>,
         Padding.Location == Rule.Location,
         Padding.Construction == Void {
@@ -89,7 +89,7 @@ public enum Pattern {
 
         @inlinable public static func parse<Source>(
             _ input: inout ParsingInput<some ParsingDiagnostics<Source>>
-        ) throws -> Rule.Construction
+        ) throws(PatternMatchingError) -> Rule.Construction
             where Source: Collection<Terminal>, Source.Index == Location {
             input.parse(as: Padding.self, in: Void.self)
             let construction: Rule.Construction = try input.parse(as: Rule.self)
@@ -102,7 +102,7 @@ public enum Pattern {
         where Digit: DigitRule, Digit.Construction: FixedWidthInteger
 
     public enum UnsignedNormalizedInteger<First, Next>: ParsingRule
-        where   First: ParsingRule, First.Construction: FixedWidthInteger,
+        where First: ParsingRule, First.Construction: FixedWidthInteger,
         Next: DigitRule<First.Terminal, First.Construction>,
         Next.Location == First.Location {
         public typealias Location = First.Location
@@ -110,7 +110,7 @@ public enum Pattern {
 
         @inlinable public static func parse<Source>(
             _ input: inout ParsingInput<some ParsingDiagnostics<Source>>
-        ) throws -> Next.Construction
+        ) throws(PatternMatchingError) -> Next.Construction
             where Source: Collection<Terminal>, Source.Index == Location {
             var value: Next.Construction = try input.parse(as: First.self)
             while let remainder: Next.Construction = input.parse(as: Next?.self) {
@@ -118,7 +118,7 @@ public enum Pattern {
                     by: Next.radix
                 ),
                 case (let refined, false) = shifted.addingReportingOverflow(remainder) else {
-                    throw IntegerOverflowError<Next.Construction>.init()
+                    throw .arbitrary(IntegerOverflowError<Next.Construction>.init())
                 }
                 value = refined
             }

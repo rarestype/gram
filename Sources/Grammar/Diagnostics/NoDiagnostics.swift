@@ -21,7 +21,7 @@
     @inline(__always) @inlinable public func reset(
         index: inout Source.Index,
         to breadcrumb: Source.Index,
-        because _: inout any Error
+        because _: inout PatternMatchingError
     ) {
         index = breadcrumb
     }

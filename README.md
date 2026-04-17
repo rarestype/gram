@@ -34,7 +34,7 @@ let package: Package = .init(
     ...
     dependencies: [
         // other dependencies
-        .package(url: "https://github.com/rarestype/gram", from: "1.0.0"),
+        .package(url: "https://github.com/rarestype/gram", from: "2.0.0"),
     ],
     targets: [
         .target(

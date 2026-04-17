@@ -3,7 +3,7 @@ public import TraceableErrors
 /// An error type that indicates the furthest-successful parse, and provides a
 /// stack trace detailing how the parser got there.
 ///
-/// None of the structured parsers defined in swift-grammar throw this error
+/// None of the structured parsers defined in *gram* throw this error
 /// directly. Instead, the ``DefaultDiagnostics`` engine computes it
 /// based on the diagnostic engine’s internal state when encountering
 /// invalid input.

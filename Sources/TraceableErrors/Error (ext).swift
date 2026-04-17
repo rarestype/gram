@@ -1,6 +1,6 @@
 extension Error {
     @available(
-        *, deprecated,
+        *, unavailable,
         message: """
         calling == on (any Error, any Error) can cause infinite recursion on Swift >= 6.3
         """

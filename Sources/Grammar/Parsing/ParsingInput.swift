@@ -56,8 +56,8 @@
 
     @inlinable public mutating func parse<Rule>(
         as _: Rule.Type
-    ) throws(PatternMatchingError) -> Rule.Construction
-        where Rule: ParsingRule<Diagnostics.Source.Element>,
+    ) throws(PatternMatchingError) -> Rule.Construction where
+        Rule: ParsingRule<Diagnostics.Source.Element>,
         Rule.Location == Diagnostics.Source.Index {
         try self.group(Rule.self) { (input: inout Self) throws(PatternMatchingError) in
             try Rule.parse(&input)
@@ -80,8 +80,7 @@
     @discardableResult
     @inlinable public mutating func parse<T0, T1, T2>(
         as _: (T0, T1, T2).Type
-    ) throws(PatternMatchingError) -> (T0.Construction, T1.Construction, T2.Construction)
-        where
+    ) throws(PatternMatchingError) -> (T0.Construction, T1.Construction, T2.Construction) where
         T0: ParsingRule<Diagnostics.Source.Element>, T0.Location == Diagnostics.Source.Index,
         T1: ParsingRule<Diagnostics.Source.Element>, T1.Location == Diagnostics.Source.Index,
         T2: ParsingRule<Diagnostics.Source.Element>, T2.Location == Diagnostics.Source.Index {
@@ -96,8 +95,12 @@
     @discardableResult
     @inlinable public mutating func parse<T0, T1, T2, T3>(
         as _: (T0, T1, T2, T3).Type
-    ) throws(PatternMatchingError) -> (T0.Construction, T1.Construction, T2.Construction, T3.Construction)
-        where
+    ) throws(PatternMatchingError) -> (
+        T0.Construction,
+        T1.Construction,
+        T2.Construction,
+        T3.Construction
+    ) where
         T0: ParsingRule<Diagnostics.Source.Element>, T0.Location == Diagnostics.Source.Index,
         T1: ParsingRule<Diagnostics.Source.Element>, T1.Location == Diagnostics.Source.Index,
         T2: ParsingRule<Diagnostics.Source.Element>, T2.Location == Diagnostics.Source.Index,
@@ -116,8 +119,13 @@
     @discardableResult
     @inlinable public mutating func parse<T0, T1, T2, T3, T4>(
         as _: (T0, T1, T2, T3, T4).Type
-    ) throws(PatternMatchingError) -> (T0.Construction, T1.Construction, T2.Construction, T3.Construction, T4.Construction)
-        where
+    ) throws(PatternMatchingError) -> (
+        T0.Construction,
+        T1.Construction,
+        T2.Construction,
+        T3.Construction,
+        T4.Construction
+    ) where
         T0: ParsingRule<Diagnostics.Source.Element>, T0.Location == Diagnostics.Source.Index,
         T1: ParsingRule<Diagnostics.Source.Element>, T1.Location == Diagnostics.Source.Index,
         T2: ParsingRule<Diagnostics.Source.Element>, T2.Location == Diagnostics.Source.Index,

@@ -1,7 +1,7 @@
 extension Pattern {
     /// A rule that expects the end of the input.
     ///
-    /// >   Throws: ``UnexpectedValueError`` if there is any
+    /// >   Throws: ``PatternMatchingError.unexpectedValue`` if there is any
     ///     input remaining.
     public enum End<Location, Terminal>: ParsingRule {
         @inlinable public static func parse<Source>(

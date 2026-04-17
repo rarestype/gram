@@ -50,7 +50,7 @@ extension ParsingRule {
     ///
     ///
     /// >   Throws:
-    ///     A ``Pattern.UnexpectedValueError`` if there remained any
+    ///     A ``PatternMatchingError.unexpectedValue`` if there remained any
     ///     unparsed input after applying this rule to its furthest extent.
     @inlinable public static func parse<Source>(
         diagnosing source: Source
@@ -65,7 +65,7 @@ extension ParsingRule {
     ///
     /// To parse with diagnostics, use ``parse(diagnosing:)``.
     /// >   Throws:
-    ///     A ``Pattern.UnexpectedValueError`` if there remained any
+    ///     A ``PatternMatchingError.unexpectedValue`` if there remained any
     ///     unparsed input after applying this rule to its furthest extent.
     @inlinable public static func parse<Source>(
         _ source: Source
@@ -80,7 +80,7 @@ extension ParsingRule {
     ///
     /// This function does not parse with diagnostics.
     /// >   Throws:
-    ///     A ``Pattern.UnexpectedValueError`` if there remained any
+    ///     A ``PatternMatchingError.unexpectedValue`` if there remained any
     ///     unparsed input after applying this rule to its furthest extent.
     @inlinable public static func parse<Source, Vector>(
         _ source: Source,

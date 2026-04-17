@@ -1,6 +1,5 @@
 /// A generic context for unicode definitions.
-public enum UnicodeEncoding<Location, Terminal> {
-}
+public enum UnicodeEncoding<Location, Terminal> {}
 extension UnicodeEncoding where Terminal: ASCIITerminal {
     @available(*, unavailable, renamed: "StartOfHeading")
     public typealias StartOfHeader = StartOfHeading
@@ -580,9 +579,9 @@ extension UnicodeEncoding where Terminal: ASCIITerminal {
     /// ``UppercaseA`` or
     /// ``LowercaseA`` rules.
     public enum A: TerminalRule {
-        public typealias Construction  = Void
+        public typealias Construction  = ()
 
-        @inlinable public static func parse(terminal: Terminal) -> Void? {
+        @inlinable public static func parse(terminal: Terminal) -> ()? {
             switch terminal {
             case .init(0x41), .init(0x61):
                 return ()
@@ -616,9 +615,9 @@ extension UnicodeEncoding where Terminal: ASCIITerminal {
     /// ``UppercaseB`` or
     /// ``LowercaseB`` rules.
     public enum B: TerminalRule {
-        public typealias Construction  = Void
+        public typealias Construction  = ()
 
-        @inlinable public static func parse(terminal: Terminal) -> Void? {
+        @inlinable public static func parse(terminal: Terminal) -> ()? {
             switch terminal {
             case .init(0x42), .init(0x62):
                 return ()
@@ -652,9 +651,9 @@ extension UnicodeEncoding where Terminal: ASCIITerminal {
     /// ``UppercaseC`` or
     /// ``LowercaseC`` rules.
     public enum C: TerminalRule {
-        public typealias Construction  = Void
+        public typealias Construction  = ()
 
-        @inlinable public static func parse(terminal: Terminal) -> Void? {
+        @inlinable public static func parse(terminal: Terminal) -> ()? {
             switch terminal {
             case .init(0x43), .init(0x63):
                 return ()
@@ -688,9 +687,9 @@ extension UnicodeEncoding where Terminal: ASCIITerminal {
     /// ``UppercaseD`` or
     /// ``LowercaseD`` rules.
     public enum D: TerminalRule {
-        public typealias Construction  = Void
+        public typealias Construction  = ()
 
-        @inlinable public static func parse(terminal: Terminal) -> Void? {
+        @inlinable public static func parse(terminal: Terminal) -> ()? {
             switch terminal {
             case .init(0x44), .init(0x64):
                 return ()
@@ -724,9 +723,9 @@ extension UnicodeEncoding where Terminal: ASCIITerminal {
     /// ``UppercaseE`` or
     /// ``LowercaseE`` rules.
     public enum E: TerminalRule {
-        public typealias Construction  = Void
+        public typealias Construction  = ()
 
-        @inlinable public static func parse(terminal: Terminal) -> Void? {
+        @inlinable public static func parse(terminal: Terminal) -> ()? {
             switch terminal {
             case .init(0x45), .init(0x65):
                 return ()
@@ -760,9 +759,9 @@ extension UnicodeEncoding where Terminal: ASCIITerminal {
     /// ``UppercaseF`` or
     /// ``LowercaseF`` rules.
     public enum F: TerminalRule {
-        public typealias Construction  = Void
+        public typealias Construction  = ()
 
-        @inlinable public static func parse(terminal: Terminal) -> Void? {
+        @inlinable public static func parse(terminal: Terminal) -> ()? {
             switch terminal {
             case .init(0x46), .init(0x66):
                 return ()
@@ -796,9 +795,9 @@ extension UnicodeEncoding where Terminal: ASCIITerminal {
     /// ``UppercaseG`` or
     /// ``LowercaseG`` rules.
     public enum G: TerminalRule {
-        public typealias Construction  = Void
+        public typealias Construction  = ()
 
-        @inlinable public static func parse(terminal: Terminal) -> Void? {
+        @inlinable public static func parse(terminal: Terminal) -> ()? {
             switch terminal {
             case .init(0x47), .init(0x67):
                 return ()
@@ -832,9 +831,9 @@ extension UnicodeEncoding where Terminal: ASCIITerminal {
     /// ``UppercaseH`` or
     /// ``LowercaseH`` rules.
     public enum H: TerminalRule {
-        public typealias Construction  = Void
+        public typealias Construction  = ()
 
-        @inlinable public static func parse(terminal: Terminal) -> Void? {
+        @inlinable public static func parse(terminal: Terminal) -> ()? {
             switch terminal {
             case .init(0x48), .init(0x68):
                 return ()
@@ -868,9 +867,9 @@ extension UnicodeEncoding where Terminal: ASCIITerminal {
     /// ``UppercaseI`` or
     /// ``LowercaseI`` rules.
     public enum I: TerminalRule {
-        public typealias Construction  = Void
+        public typealias Construction  = ()
 
-        @inlinable public static func parse(terminal: Terminal) -> Void? {
+        @inlinable public static func parse(terminal: Terminal) -> ()? {
             switch terminal {
             case .init(0x49), .init(0x69):
                 return ()
@@ -904,9 +903,9 @@ extension UnicodeEncoding where Terminal: ASCIITerminal {
     /// ``UppercaseJ`` or
     /// ``LowercaseJ`` rules.
     public enum J: TerminalRule {
-        public typealias Construction  = Void
+        public typealias Construction  = ()
 
-        @inlinable public static func parse(terminal: Terminal) -> Void? {
+        @inlinable public static func parse(terminal: Terminal) -> ()? {
             switch terminal {
             case .init(0x4a), .init(0x6a):
                 return ()
@@ -940,9 +939,9 @@ extension UnicodeEncoding where Terminal: ASCIITerminal {
     /// ``UppercaseK`` or
     /// ``LowercaseK`` rules.
     public enum K: TerminalRule {
-        public typealias Construction  = Void
+        public typealias Construction  = ()
 
-        @inlinable public static func parse(terminal: Terminal) -> Void? {
+        @inlinable public static func parse(terminal: Terminal) -> ()? {
             switch terminal {
             case .init(0x4b), .init(0x6b):
                 return ()
@@ -976,9 +975,9 @@ extension UnicodeEncoding where Terminal: ASCIITerminal {
     /// ``UppercaseL`` or
     /// ``LowercaseL`` rules.
     public enum L: TerminalRule {
-        public typealias Construction  = Void
+        public typealias Construction  = ()
 
-        @inlinable public static func parse(terminal: Terminal) -> Void? {
+        @inlinable public static func parse(terminal: Terminal) -> ()? {
             switch terminal {
             case .init(0x4c), .init(0x6c):
                 return ()
@@ -1012,9 +1011,9 @@ extension UnicodeEncoding where Terminal: ASCIITerminal {
     /// ``UppercaseM`` or
     /// ``LowercaseM`` rules.
     public enum M: TerminalRule {
-        public typealias Construction  = Void
+        public typealias Construction  = ()
 
-        @inlinable public static func parse(terminal: Terminal) -> Void? {
+        @inlinable public static func parse(terminal: Terminal) -> ()? {
             switch terminal {
             case .init(0x4d), .init(0x6d):
                 return ()
@@ -1048,9 +1047,9 @@ extension UnicodeEncoding where Terminal: ASCIITerminal {
     /// ``UppercaseN`` or
     /// ``LowercaseN`` rules.
     public enum N: TerminalRule {
-        public typealias Construction  = Void
+        public typealias Construction  = ()
 
-        @inlinable public static func parse(terminal: Terminal) -> Void? {
+        @inlinable public static func parse(terminal: Terminal) -> ()? {
             switch terminal {
             case .init(0x4e), .init(0x6e):
                 return ()
@@ -1084,9 +1083,9 @@ extension UnicodeEncoding where Terminal: ASCIITerminal {
     /// ``UppercaseO`` or
     /// ``LowercaseO`` rules.
     public enum O: TerminalRule {
-        public typealias Construction  = Void
+        public typealias Construction  = ()
 
-        @inlinable public static func parse(terminal: Terminal) -> Void? {
+        @inlinable public static func parse(terminal: Terminal) -> ()? {
             switch terminal {
             case .init(0x4f), .init(0x6f):
                 return ()
@@ -1120,9 +1119,9 @@ extension UnicodeEncoding where Terminal: ASCIITerminal {
     /// ``UppercaseP`` or
     /// ``LowercaseP`` rules.
     public enum P: TerminalRule {
-        public typealias Construction  = Void
+        public typealias Construction  = ()
 
-        @inlinable public static func parse(terminal: Terminal) -> Void? {
+        @inlinable public static func parse(terminal: Terminal) -> ()? {
             switch terminal {
             case .init(0x50), .init(0x70):
                 return ()
@@ -1156,9 +1155,9 @@ extension UnicodeEncoding where Terminal: ASCIITerminal {
     /// ``UppercaseQ`` or
     /// ``LowercaseQ`` rules.
     public enum Q: TerminalRule {
-        public typealias Construction  = Void
+        public typealias Construction  = ()
 
-        @inlinable public static func parse(terminal: Terminal) -> Void? {
+        @inlinable public static func parse(terminal: Terminal) -> ()? {
             switch terminal {
             case .init(0x51), .init(0x71):
                 return ()
@@ -1192,9 +1191,9 @@ extension UnicodeEncoding where Terminal: ASCIITerminal {
     /// ``UppercaseR`` or
     /// ``LowercaseR`` rules.
     public enum R: TerminalRule {
-        public typealias Construction  = Void
+        public typealias Construction  = ()
 
-        @inlinable public static func parse(terminal: Terminal) -> Void? {
+        @inlinable public static func parse(terminal: Terminal) -> ()? {
             switch terminal {
             case .init(0x52), .init(0x72):
                 return ()
@@ -1228,9 +1227,9 @@ extension UnicodeEncoding where Terminal: ASCIITerminal {
     /// ``UppercaseS`` or
     /// ``LowercaseS`` rules.
     public enum S: TerminalRule {
-        public typealias Construction  = Void
+        public typealias Construction  = ()
 
-        @inlinable public static func parse(terminal: Terminal) -> Void? {
+        @inlinable public static func parse(terminal: Terminal) -> ()? {
             switch terminal {
             case .init(0x53), .init(0x73):
                 return ()
@@ -1264,9 +1263,9 @@ extension UnicodeEncoding where Terminal: ASCIITerminal {
     /// ``UppercaseT`` or
     /// ``LowercaseT`` rules.
     public enum T: TerminalRule {
-        public typealias Construction  = Void
+        public typealias Construction  = ()
 
-        @inlinable public static func parse(terminal: Terminal) -> Void? {
+        @inlinable public static func parse(terminal: Terminal) -> ()? {
             switch terminal {
             case .init(0x54), .init(0x74):
                 return ()
@@ -1300,9 +1299,9 @@ extension UnicodeEncoding where Terminal: ASCIITerminal {
     /// ``UppercaseU`` or
     /// ``LowercaseU`` rules.
     public enum U: TerminalRule {
-        public typealias Construction  = Void
+        public typealias Construction  = ()
 
-        @inlinable public static func parse(terminal: Terminal) -> Void? {
+        @inlinable public static func parse(terminal: Terminal) -> ()? {
             switch terminal {
             case .init(0x55), .init(0x75):
                 return ()
@@ -1336,9 +1335,9 @@ extension UnicodeEncoding where Terminal: ASCIITerminal {
     /// ``UppercaseV`` or
     /// ``LowercaseV`` rules.
     public enum V: TerminalRule {
-        public typealias Construction  = Void
+        public typealias Construction  = ()
 
-        @inlinable public static func parse(terminal: Terminal) -> Void? {
+        @inlinable public static func parse(terminal: Terminal) -> ()? {
             switch terminal {
             case .init(0x56), .init(0x76):
                 return ()
@@ -1372,9 +1371,9 @@ extension UnicodeEncoding where Terminal: ASCIITerminal {
     /// ``UppercaseW`` or
     /// ``LowercaseW`` rules.
     public enum W: TerminalRule {
-        public typealias Construction  = Void
+        public typealias Construction  = ()
 
-        @inlinable public static func parse(terminal: Terminal) -> Void? {
+        @inlinable public static func parse(terminal: Terminal) -> ()? {
             switch terminal {
             case .init(0x57), .init(0x77):
                 return ()
@@ -1408,9 +1407,9 @@ extension UnicodeEncoding where Terminal: ASCIITerminal {
     /// ``UppercaseX`` or
     /// ``LowercaseX`` rules.
     public enum X: TerminalRule {
-        public typealias Construction  = Void
+        public typealias Construction  = ()
 
-        @inlinable public static func parse(terminal: Terminal) -> Void? {
+        @inlinable public static func parse(terminal: Terminal) -> ()? {
             switch terminal {
             case .init(0x58), .init(0x78):
                 return ()
@@ -1444,9 +1443,9 @@ extension UnicodeEncoding where Terminal: ASCIITerminal {
     /// ``UppercaseY`` or
     /// ``LowercaseY`` rules.
     public enum Y: TerminalRule {
-        public typealias Construction  = Void
+        public typealias Construction  = ()
 
-        @inlinable public static func parse(terminal: Terminal) -> Void? {
+        @inlinable public static func parse(terminal: Terminal) -> ()? {
             switch terminal {
             case .init(0x59), .init(0x79):
                 return ()
@@ -1480,9 +1479,9 @@ extension UnicodeEncoding where Terminal: ASCIITerminal {
     /// ``UppercaseZ`` or
     /// ``LowercaseZ`` rules.
     public enum Z: TerminalRule {
-        public typealias Construction  = Void
+        public typealias Construction  = ()
 
-        @inlinable public static func parse(terminal: Terminal) -> Void? {
+        @inlinable public static func parse(terminal: Terminal) -> ()? {
             switch terminal {
             case .init(0x5a), .init(0x7a):
                 return ()

@@ -40,7 +40,7 @@ public protocol ParsingRule<Terminal> {
     ///     as you do not overwrite the inout binding elsewhere.
     static func parse<Source>(
         _ input: inout ParsingInput<some ParsingDiagnostics<Source>>
-    ) throws -> Construction
+    ) throws(PatternMatchingError) -> Construction
         where Source: Collection<Terminal>, Source.Index == Location
 }
 
@@ -50,11 +50,11 @@ extension ParsingRule {
     ///
     ///
     /// >   Throws:
-    ///     A ``Pattern.UnexpectedValueError`` if there remained any
+    ///     A ``PatternMatchingError.unexpectedValue`` if there remained any
     ///     unparsed input after applying this rule to its furthest extent.
     @inlinable public static func parse<Source>(
         diagnosing source: Source
-    ) throws -> Construction
+    ) throws(PatternMatchingError) -> Construction
         where Source: Collection<Terminal>, Source.Index == Location {
         var input: ParsingInput<DefaultDiagnostics<Source>> = .init(source)
         let construction: Construction = try input.parse(as: Self.self)
@@ -65,9 +65,11 @@ extension ParsingRule {
     ///
     /// To parse with diagnostics, use ``parse(diagnosing:)``.
     /// >   Throws:
-    ///     A ``Pattern.UnexpectedValueError`` if there remained any
+    ///     A ``PatternMatchingError.unexpectedValue`` if there remained any
     ///     unparsed input after applying this rule to its furthest extent.
-    @inlinable public static func parse<Source>(_ source: Source) throws -> Construction
+    @inlinable public static func parse<Source>(
+        _ source: Source
+    ) throws(PatternMatchingError) -> Construction
         where Source: Collection<Terminal>, Source.Index == Location {
         var input: ParsingInput<NoDiagnostics<Source>> = .init(source)
         let construction: Construction = try input.parse(as: Self.self)
@@ -78,43 +80,17 @@ extension ParsingRule {
     ///
     /// This function does not parse with diagnostics.
     /// >   Throws:
-    ///     A ``Pattern.UnexpectedValueError`` if there remained any
+    ///     A ``PatternMatchingError.unexpectedValue`` if there remained any
     ///     unparsed input after applying this rule to its furthest extent.
     @inlinable public static func parse<Source, Vector>(
         _ source: Source,
         into _: Vector.Type = Vector.self
-    ) throws -> Vector
-        where   Source: Collection<Terminal>, Source.Index == Location,
+    ) throws(PatternMatchingError) -> Vector
+        where Source: Collection<Terminal>, Source.Index == Location,
         Vector: RangeReplaceableCollection<Construction> {
         var input: ParsingInput<NoDiagnostics<Source>> = .init(source)
         let construction: Vector = input.parse(as: Self.self, in: Vector.self)
         try input.parse(as: Pattern.End<Location, Terminal>.self)
         return construction
-    }
-}
-
-// these extensions are mainly useful when defined as part of a tuple rule.
-// otherwise, the overloads in the previous section of code should be preferred
-extension Optional: ParsingRule where Wrapped: ParsingRule {
-    public typealias Location  = Wrapped.Location
-    public typealias Terminal  = Wrapped.Terminal
-
-    @inlinable public static func parse<Source>(
-        _ input: inout ParsingInput<some ParsingDiagnostics<Source>>
-    ) -> Wrapped.Construction?
-        where Source: Collection<Terminal>, Source.Index == Location {
-        // will choose non-throwing overload, so no infinite recursion will occur
-        input.parse(as: Wrapped?.self)
-    }
-}
-extension Array: ParsingRule where Element: ParsingRule {
-    public typealias Location = Element.Location
-    public typealias Terminal = Element.Terminal
-
-    @inlinable public static func parse<Source>(
-        _ input: inout ParsingInput<some ParsingDiagnostics<Source>>
-    ) -> [Element.Construction]
-        where Source: Collection<Terminal>, Source.Index == Location {
-        input.parse(as: Element.self, in: [Element.Construction].self)
     }
 }

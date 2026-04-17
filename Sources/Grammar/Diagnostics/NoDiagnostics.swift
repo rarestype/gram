@@ -7,8 +7,7 @@
 ///
 /// For richer debugging information, use ``DefaultDiagnostics`` instead.
 @frozen public struct NoDiagnostics<Source>: ParsingDiagnostics where Source: Collection {
-    @inlinable public init() {
-    }
+    @inlinable public init() {}
     // force inlining because these functions ignore most of their inputs, and
     // don’t contain many instructions (if any)
     @inline(__always) @inlinable public func push(
@@ -18,12 +17,11 @@
     ) -> Source.Index {
         index
     }
-    @inline(__always) @inlinable public func pop() {
-    }
+    @inline(__always) @inlinable public func pop() {}
     @inline(__always) @inlinable public func reset(
         index: inout Source.Index,
         to breadcrumb: Source.Index,
-        because _: inout any Error
+        because _: inout PatternMatchingError
     ) {
         index = breadcrumb
     }

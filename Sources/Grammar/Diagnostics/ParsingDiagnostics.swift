@@ -11,5 +11,9 @@ public protocol ParsingDiagnostics<Source> {
         by _: Rule.Type
     ) -> Breadcrumb
     mutating func pop()
-    mutating func reset(index: inout Source.Index, to: Breadcrumb, because: inout any Error)
+    mutating func reset(
+        index: inout Source.Index,
+        to: Breadcrumb,
+        because: inout PatternMatchingError
+    )
 }

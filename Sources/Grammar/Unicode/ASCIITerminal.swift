@@ -6,10 +6,3 @@
 public protocol ASCIITerminal: Equatable {
     init(_: UInt8)
 }
-
-extension UInt8: ASCIITerminal {
-}
-extension UInt16: ASCIITerminal {
-}
-extension Unicode.Scalar: ASCIITerminal {
-}

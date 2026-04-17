@@ -2,5 +2,3 @@
 public protocol UTF16Terminal: ASCIITerminal {
     init(_: UInt16)
 }
-extension UInt16: UTF16Terminal {
-}

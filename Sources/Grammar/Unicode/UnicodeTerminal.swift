@@ -2,5 +2,3 @@
 public protocol UnicodeTerminal: ASCIITerminal {
     init(_: Unicode.Scalar)
 }
-extension Unicode.Scalar: UnicodeTerminal {
-}

@@ -29,7 +29,7 @@ public import TraceableErrors
 extension ParsingError: TraceableError {
     public var notes: [String] {
         trace.map {
-            if $0.construction is Void.Type {
+            if $0.construction is ().Type {
                 return "while matching pattern '\($0.rule)'"
             } else {
                 return "while parsing value of type '\($0.construction)' by rule '\($0.rule)'"
@@ -42,8 +42,7 @@ extension ParsingError {
         _ range: Range<Index>, background: Background,
         renderer render: (Background.SubSequence) -> String,
         newline predicate: (Background.Element) -> Bool
-    )
-    -> String
+    ) -> String
         where Background: BidirectionalCollection, Background.Index == Index {
         // `..<` means this will print the previous line if the problematic
         // index references the newline itself

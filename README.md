@@ -11,7 +11,7 @@ high-performance constructive parsing, in pure swift
 
 ## Requirements
 
-The `gram` library requires Swift 5.8 or later.
+The `gram` library requires Swift 6.0 or later.
 
 <!-- DO NOT EDIT BELOW! AUTOSYNC CONTENT [STATUS TABLE] -->
 | Platform | Status |

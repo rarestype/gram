@@ -1,5 +1,5 @@
 extension UnicodeDigit where Terminal: BinaryInteger {
-    /// Matches a binary digit, without case-sensitivity, and returns its numeric value.
+    /// Matches a binary digit and returns its numeric value.
     public enum Binary: DigitRule {
         @inlinable public static var radix: Construction { 2 }
         @inlinable public static func parse(terminal: Terminal) -> Construction? {

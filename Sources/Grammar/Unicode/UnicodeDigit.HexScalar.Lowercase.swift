@@ -1,4 +1,4 @@
-extension UnicodeDigit.HexScalar where Terminal == Unicode.Scalar {
+extension UnicodeDigit.HexScalar {
     /// Matches a lowercase hexdecimal digit and returns its numeric value.
     public enum Lowercase: DigitRule {
         public typealias Terminal = Unicode.Scalar

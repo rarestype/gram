@@ -1,4 +1,4 @@
-extension UnicodeDigit.Hex where Terminal: BinaryInteger {
+extension UnicodeDigit.Hex {
     /// Matches a lowercase hexadecimal digit, and returns its numeric value.
     public enum Lowercase: DigitRule {
         @inlinable public static var radix: Construction { 16 }

@@ -5,8 +5,7 @@ extension Pattern {
         where Integer: FixedWidthInteger {
         // don’t mark this @inlinable, since we generally don’t expect to
         // recover from this
-        public init() {
-        }
+        public init() {}
         public var description: String {
             "Parsed value overflows integer type '\(Integer.self)'."
         }

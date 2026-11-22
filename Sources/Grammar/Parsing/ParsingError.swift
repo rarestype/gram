@@ -55,8 +55,9 @@ extension ParsingError {
             beginning = render(background[..<range.lowerBound])
         }
         let line: String
-        let   end: Index     = background[range.lowerBound...].firstIndex(where: predicate) ??
-        background.endIndex
+        let   end: Index     =
+            background[range.lowerBound...].firstIndex(where: predicate) ??
+            background.endIndex
         if range.upperBound < end {
             middle  = render(background[range])
             line    = beginning + middle + render(background[range.upperBound..<end])

@@ -42,8 +42,11 @@
         _: Rule.Type,
         _ body: (inout Self) throws(PatternMatchingError) -> Construction
     ) throws(PatternMatchingError) -> Construction {
-        let breadcrumb: Diagnostics.Breadcrumb =
-        self.diagnostics.push(index: self.index, for: Construction.self, by: Rule.self)
+        let breadcrumb: Diagnostics.Breadcrumb = self.diagnostics.push(
+            index: self.index,
+            for: Construction.self,
+            by: Rule.self
+        )
         do {
             let construction: Construction = try body(&self)
             self.diagnostics.pop()
